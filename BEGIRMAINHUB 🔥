@@ -1,0 +1,459 @@
+-- =========================================================
+--             🌀 𝙆𝘼𝙋𝙏𝙑𝙄𝙋 𝙈𝙐𝙇𝙏𝙄-𝙈𝙊𝘿 𝙀𝙉𝙂𝙄𝙉𝙀 🌀
+-- =========================================================
+
+-- [ HIGH-TECH LOADING BAR ] --
+function StartupLoading()
+    local bar = {"▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱"}
+    for i = 1, 10 do
+        bar[i] = "▰"
+        local percent = i * 10
+        local visual = table.concat(bar)
+        gg.toast("⚡ 𝖫𝖮𝖳𝖲 𝖨𝖭𝖨𝖳𝖨𝖳𝖨𝖠𝖫𝖨𝖹𝖨𝖭𝖦 ⚡\n" .. visual .. " " .. percent .. "%")
+        gg.sleep(100)
+    end
+end
+
+-- [ TERMINATION LOADING BAR ] --
+function ExitScript()
+    local bar = {"▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱", "▱"}
+    for i = 1, 10 do
+        bar[i] = "▰"
+        local percent = i * 10
+        local visual = table.concat(bar)
+        gg.toast("🧬 𝖢𝖫𝖮𝖲𝖨𝖭𝖦 𝖢𝖮𝖱𝖤 🧬\n" .. visual .. " " .. percent .. "%")
+        gg.sleep(100)
+    end
+    gg.alert("⚙️ System completely disengaged.\nThank you for choosing KAPTVIP!")
+    os.exit()
+end
+
+-- [ PACKAGE VERIFICATION ] --
+local function verify()
+    local pkg = "com.mobile.legends"
+    local pkg2 = "com.mobilelegends.hwag"
+    if gg.getTargetPackage() ~= pkg and gg.getTargetPackage() ~= pkg2 then
+        gg.alert("❌ 𝖤𝖱𝖱𝖮𝖱: 𝖴𝖭𝖠𝖴𝖳𝖧𝖮𝖱𝖨𝖹𝖤𝖣 𝖦𝖮𝖬𝖤 𝖤𝖭𝖵𝖨𝖱𝖮𝖭𝖬𝖤𝖭𝖳")
+        ExitScript()
+    end
+end
+
+verify()
+
+-- [ SECURITY PROTOCOL ] --
+local function CHECK_LICENSE()
+    gg.toast("🌐 𝖥𝖾𝗍𝖼𝗁𝗂𝗇𝗀 𝖫𝗂𝖼𝖾𝗇𝗌𝖾 𝖣𝖺𝗍𝖺...")
+
+    -- 🔗 Replace with your own raw link
+    local KEY_URL = "https://raw.githubusercontent.com/Kaptscript/BEGIEMAINHUB-/refs/heads/main/keys.txt"
+
+    local response = gg.makeRequest(KEY_URL)
+
+    if response == nil or response.code ~= 200 then
+        gg.alert("❌ 𝖥𝖠𝖨𝖫𝖤𝖣 𝖳𝖮 𝖥𝖤𝖳𝖢𝖧 𝖫𝖨𝖢𝖤𝖭𝖲𝖤. 𝖢𝗁𝖾𝖼𝗄 𝗒𝗈𝗎𝗋 𝗂𝗇𝗍𝖾𝗋𝗇𝖾𝗍.")
+        ExitScript()
+    end
+
+    local OWNER_KEY = nil
+    local USER_KEY = nil
+
+    for line in response.content:gmatch("[^\r\n]+") do
+        local k, v = line:match("^(%w+)=(.+)$")
+        if k == "OWNER" then OWNER_KEY = v end
+        if k == "USER" then USER_KEY = v end
+    end
+
+    if OWNER_KEY == nil or USER_KEY == nil then
+        gg.alert("❌ 𝖨𝖭𝖵𝖠𝖫𝖨𝖣 𝖪𝖤𝖸 𝖥𝖨𝖫𝖤 𝖥𝖮𝖱𝖬𝖠𝖳")
+        ExitScript()
+    end
+
+    local user_input = gg.prompt({"🔑 𝖤𝖭𝖳𝖤𝖱 𝖲𝖤𝖢𝖴𝖱𝖤 𝖠𝖢𝖢𝖤𝖲𝖲 𝖪𝖤𝖸:"}, {""}, {"text"})
+
+    if user_input == nil then ExitScript() end
+
+    if user_input[1] == OWNER_KEY then
+        gg.toast("👑 𝖣𝖤𝖵𝖤𝖫𝖮𝖯𝖤𝖱 𝖠𝖢𝖢𝖤𝖲𝖲 𝖠𝖴𝖳𝖧𝖮𝖱𝖨𝖹𝖤𝖣")
+    elseif user_input[1] == USER_KEY then
+        gg.toast("🔓 𝖴𝖲𝖤𝖱 𝖠𝖢𝖢𝖤𝖲𝖲 𝖵𝖤𝖱𝖨𝖥𝖨𝖤𝖣")
+    else
+        gg.alert("🚫 𝖨𝖭𝖵𝖫𝖨𝖣 𝖪𝖤𝖸! 𝖢𝖮𝖭𝖳𝖠𝖢𝖳 𝖸𝖮𝖴𝖱 𝖠𝖣𝖬𝖨𝖭")
+        ExitScript()
+    end
+end
+
+CHECK_LICENSE()
+
+-- [ MEMORY PROTECTION BYPASS ] --
+function SECURITY_CHECK()
+    gg.setVisible(false)
+    gg.toast("🛡️ 𝖨𝗇𝗃𝖾𝖼𝗍𝗂𝗇𝗀 𝖲𝖾𝖼𝗎𝗋𝖾 𝖡𝗒1𝖺𝗌𝗌...")
+    gg.sleep(800)
+    gg.clearResults()
+    gg.clearList()
+    gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_C_BSS)
+    gg.sleep(500)
+    gg.toast("🛰️ 𝖡𝗒𝗉𝖺𝗌𝗌 𝖯𝗋𝗈𝗍𝗈𝖼𝗈𝗅: 𝖮𝖭𝖫𝖨𝖭𝖤")
+end
+
+SECURITY_CHECK()
+StartupLoading()
+
+-- [ INTERFACE NAVIGATION ] --
+function MAIN()
+    local menu = gg.multiChoice({
+        "👤 𝖯𝖫𝖠𝖸𝖤𝖱 𝖬𝖮𝖣𝖨𝖥𝖨𝖤𝖱𝖲",
+        "🤖 𝖡𝖮𝖳 / 𝖤𝖭𝖵𝖨𝖱𝖮𝖭𝖬𝖤𝖭𝖳",
+        "🚪 𝖤𝖷𝖨𝖳 𝖲𝖸𝖲𝖳𝖤𝖬"
+    }, nil, "🎛️ 𝙆𝘼𝙋𝙏𝙑𝙄𝙋 𝙈𝘼𝙄𝙉 𝘾𝙊𝙉𝙎𝙊𝙇𝙀")
+
+    if menu == nil then return end
+
+    if menu[1] then ENEMY_PLAYER() end
+    if menu[2] then ENEMY_BOT() end
+    if menu[3] then ExitScript() end
+end
+
+-- ================= CATEGORY MENUS =================
+
+function ENEMY_PLAYER()
+    local menu = gg.multiChoice({
+        "🦅 𝖣𝗋𝗈𝗇𝖾 𝖮𝗉𝗍𝗂𝖼𝗌 𝖢𝗈𝗇𝖿𝗂𝗀",
+        "🗺️ 𝖬𝖺𝗉 𝖧𝖺𝖼k (𝖭𝗈 𝖨𝖼𝗈𝗇)",
+        "🎯 𝖤𝗇𝖾𝗆𝗒 𝖳𝖺𝗋𝗀𝖾𝗍 𝖫𝗈𝖼𝗄",
+        "🌿 𝖦𝗋𝖺𝗌𝗌 𝖮𝗉𝗍𝗂𝗆𝗂𝗓𝖺𝗍𝗂𝗈𝗇",
+        "🐢 𝖫𝖺𝗋𝗀𝖾 𝖧𝖯 𝖳𝗎𝗋𝗍𝗅𝖾 𝖡𝗎𝖿𝖿",
+        "🔙 𝖱𝖾𝗍𝗎𝗋𝗇 𝗍𝗈 𝖬𝖺𝖨𝗇"
+    }, nil, "👤 𝖴𝖲𝖤𝖱 & 𝖯𝖫𝖠𝖸𝖤𝖱 𝖬𝖠𝖳𝖱𝖨𝖷")
+
+    if menu == nil then return end
+    if menu[1] then HOME() end
+    if menu[2] then map() end
+    if menu[3] then enemy() end
+    if menu[4] then noGrass() end
+    if menu[5] then largHPTurtleBuff() end
+end
+
+function ENEMY_BOT()
+    local menu = gg.multiChoice({
+        "💸 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 𝖦𝗈𝗅𝖽 𝖤𝗇𝗀𝗂𝗇𝖾",
+        "⏱️ 𝖢𝖧𝗋𝗈𝗇𝗈 𝖳𝗂𝗆𝖾 𝖲𝗄𝗂𝗉𝗉𝖾𝗋",
+        "💥 𝖣𝖺𝗆𝖺𝗀𝖾 𝖱𝖺𝖽𝗂𝗎𝗌 𝖧𝖺𝖼𝗄",
+        "🔙 𝖱𝖾𝗍𝗎𝗋𝗇 𝗍𝗈 𝖬𝖺𝖨𝗇"
+    }, nil, "🤖 𝖤𝖭𝖵𝖨𝖱𝖮𝖭𝖬𝖤𝖭𝖳 & 𝖠𝖨 𝖬𝖮𝖣𝖲")
+
+    if menu == nil then return end
+    if menu[1] then GOLD() end
+    if menu[2] then skipperClassic() end
+    if menu[3] then damage_hack() end
+end
+
+-- ====================== DAMAGE HACK LOGIC ======================
+
+function damage_hack()
+    local menu = gg.choice({
+        "🎯 𝖧𝖾𝗋𝗈 𝖵𝖾𝗀𝗍𝗈𝗋: 𝖫𝖺𝗒𝗅𝖺",
+        "🎯 𝖧𝖾𝗋𝗈 𝖵𝖾𝗀𝗍𝗈𝗋: 𝖬𝗂𝗒𝖺",
+        "🎯 𝖧𝖾𝗋𝗈 𝖵𝖾𝗀𝗍𝗈𝗋: 𝖧𝖺𝗇𝖺𝖻𝗂",
+        "🔙 𝖡𝖺𝖼𝗄"
+    }, nil, "💥 𝖲𝖤𝖫𝖤𝖢𝖳 𝖣𝖠𝖬𝖠𝖦𝖤 𝖳𝖠𝖱𝖦𝖤𝖳")
+
+    if menu == nil then return end
+    
+    if menu == 1 then
+        StartupLoading()
+        gg.toast("🚨 𝖠𝖼𝗍𝗂𝗏𝖺𝗍𝗂𝗇𝗀: 𝖫𝖺𝗒𝗅𝖺 𝖣𝖺𝗆𝖺𝗀𝖾")
+        gg.setRanges((gg.REGION_ANONYMOUS))
+        gg.searchNumber("2320;133;290", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+        revert = gg.getResults(10000)
+        gg.editAll("8000", gg.TYPE_QWORD)
+        gg.clearResults()
+    end
+    
+    if menu == 2 then
+        StartupLoading()
+        gg.toast("🚨 𝖠𝖼𝗍𝗂𝗏𝖺𝗍𝗂𝗇𝗀: 𝖬𝗂𝗒𝖺 𝖣𝖺𝗆𝖺𝗀𝖾")
+        gg.setRanges((gg.REGION_ANONYMOUS))
+        gg.searchNumber("2320;115;290", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+        revert = gg.getResults(10000)
+        gg.editAll("8000", gg.TYPE_QWORD)
+        gg.clearResults()
+    end
+    
+    if menu == 3 then
+        StartupLoading()
+        gg.toast("🚨 𝖠𝖼𝗍𝗂𝗏𝖺𝗍𝗂𝗇𝗀: 𝖧𝖺𝗇𝖺𝖻𝗂 𝖣𝖺𝗆𝖺𝗀𝖾")
+        gg.setRanges((gg.REGION_ANONYMOUS))
+        gg.searchNumber("2260;111;285", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+        revert = gg.getResults(10000)
+        gg.editAll("8000", gg.TYPE_QWORD)
+        gg.clearResults()
+    end
+end
+
+-- ====================== PLAYER FUNCTIONS ======================
+
+function enemy()
+    StartupLoading()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("8.0E;1.5e-323E;2.47e-321E;5.93e-322E;6.0e-322E", gg.TYPE_DOUBLE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    gg.processResume()
+    gg.refineNumber("8", gg.TYPE_DOUBLE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    revert = gg.getResults(10, nil, nil, nil, nil, nil, nil, nil, nil)
+    gg.editAll("15", gg.TYPE_DOUBLE)
+    gg.clearResults()
+    gg.toast("🎯 𝖳𝖺𝗋𝗀𝖾𝗍 𝖣𝖾𝗍𝖾𝖼𝗍𝗈𝗋: 𝖤𝖭𝖦𝖠𝖦𝖤𝖣")
+end
+
+-- ====================== NO GRASS ======================
+
+function noGrass()
+    StartupLoading()
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.clearResults()
+    gg.searchNumber("0.46", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1, 0)
+    gg.refineNumber("0.46", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1, 0)
+    revert = gg.getResults(10000, nil, nil, nil, nil, nil, nil, nil, nil)
+    gg.editAll("9", gg.TYPE_FLOAT)
+    gg.clearResults()
+    gg.toast("🌿 𝖤𝗇𝗏𝗂𝗋𝗈𝗇𝗆𝖾𝗇𝗍: 𝖦𝗋𝖺𝗌𝗌 𝖱𝖾𝗆𝗈𝗏𝖾𝖽")
+end
+
+-- ====================== LARGE HP TURTLE BUFF ======================
+
+function largHPTurtleBuff()
+    StartupLoading()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.clearResults()
+    gg.searchNumber("1.0F;0.85000002384F", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1, 0)
+    gg.refineNumber("1", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1, 0)
+    revert = gg.getResults(5000, nil, nil, nil, nil, nil, nil, nil, nil)
+    gg.editAll("3", gg.TYPE_FLOAT)
+    local t = gg.getResults(5000, nil, nil, nil, nil, nil, nil, nil, nil)
+    gg.addListItems(t)
+    t = nil
+    gg.clearResults()
+    gg.toast("🐢 𝖡𝗎𝖿𝖿 𝖬𝗈𝖽𝗂𝖿𝗂𝖾𝗋: 𝖫𝖺𝗋𝗀𝖾 𝖧𝖯 𝖠𝖼𝗍𝗂𝗏𝖾")
+end
+
+-- ====================== CAMERA VIEW FUNCTIONS ======================
+
+
+function HOME()
+    local prompt = gg.prompt(
+        {"𝙳𝚛𝚘𝚗𝚎 𝚅𝚒𝚎𝚠: [1;4]"}, 
+        {"1"}, 
+        {"number"}
+    )
+
+    if prompt == nil then return end
+
+    local choice = tonumber(prompt[1])
+
+    if choice == 1 then
+        DRONE_4X()
+    elseif choice == 2 then
+        DRONE_6X()
+    elseif choice == 3 then
+        DRONE_8X()
+    elseif choice == 4 then
+        DRONE_10X()
+    else
+        gg.toast("❌ 𝙿𝚕𝚎𝚊𝚜𝚎 𝚒𝚗𝚙𝚞𝚝 𝚗𝚞𝚖𝚋𝚎𝚛 1 - 4 𝚘𝚗𝚕𝚢!")
+    end
+end
+
+function DRONE_4X()
+    StartupLoading()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("1089806008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089806008", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1094506008", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("-1053839852", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1048839852", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1048839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089722122", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1094522122", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1053577640", gg.TYPE_DWORD)
+    gg.searchNumber("-1053577640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057761526", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1054071526", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.toast("🦅 𝖮𝗉𝗍𝗂𝖼𝗌: 𝟦𝗑 𝖵𝗂𝗌𝗂𝗈𝗇 𝖤𝗇𝖺𝖻𝗅𝖾𝖽")
+end
+
+function DRONE_6X()
+    StartupLoading()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("1089806008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089806008", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1095506008", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("-1053839852", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1047839852", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1048839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089722122", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1095522122", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1052577640", gg.TYPE_DWORD)
+    gg.searchNumber("-1053577640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057761526", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1053071526", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.toast("🦅 𝖮𝗉𝗍𝗂𝖼𝗌: 𝟨𝗑 𝖵𝗂𝗌𝗂𝗈𝗇 𝖤\2𝗇𝖺𝖻𝗅𝖾𝖽")
+end
+
+function DRONE_8X()
+    StartupLoading()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("1089806008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089806008", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1097506008", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("-1053839852", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1045839852", gg.TYPE_DWORD)
+    gg.searchNumber("1094506008;-1048839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089722122", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1097522122", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1050577640", gg.TYPE_DWORD)
+    gg.searchNumber("-1053577640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057761526", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1051071526", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.toast("🦅 𝖮𝗉𝗍𝗂𝖼𝗌: 𝟪𝗑 𝖵𝗂𝗌𝗂𝗈𝗇 𝖤𝗇𝖺𝖻𝗅𝖾𝖽")
+end
+
+function DRONE_10X()
+    StartupLoading()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_C_BSS)
+    gg.searchNumber("1089806008;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089806008", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1097649357", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.searchNumber("1097649357;-1053839852;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("-1053839852", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1045902131", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.searchNumber("1097649357;-1045902131;1089722122", gg.TYPE_DWORD)
+    gg.searchNumber("1089722122", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("1097607414", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.searchNumber("-1057677640;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057677640", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1049834291", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.searchNumber("-1049834291;-1057761526;1110143140", gg.TYPE_DWORD)
+    gg.searchNumber("-1057761526", gg.TYPE_DWORD)
+    gg.getResults(100)
+    gg.editAll("-1049876234", gg.TYPE_DWORD)
+    gg.clearResults()
+    gg.toast("🦅 𝖮𝗉𝗍𝗂𝖼𝗌: 𝟣𝟢𝗑 𝖵\3𝗂𝗌𝗂𝗈𝗇 𝖤𝗇𝖺𝖻𝗅𝖾𝖽")
+end
+
+-- ================= GOLD LOGIC =================
+function GOLD()
+    StartupLoading()
+    gg.clearResults()
+    gg.setVisible(false)
+    gg.toast("💸 𝖨𝗇𝗂𝗍𝗂𝖺𝗍𝗂𝗇𝗅 𝖦𝗈𝗅𝖽 𝖬𝖾𝗆𝗈𝗋𝗒 𝖧𝗈𝗈𝗄...")
+    gg.sleep(1000)
+    gg.toast("🔍 𝖲𝖳𝖤𝖯 𝟣: 𝖲𝖼𝖺𝗇𝗇𝗂𝗇𝗀 𝖡𝖺𝗌𝖾 𝖵𝖺𝗅𝗎𝖾𝗌...")
+    gg.searchNumber("300", gg.TYPE_DWORD)
+    gg.sleep(2000)
+    gg.toast("🛒 𝖬𝖮𝖣𝖤𝖱𝖠𝖳𝖤: 𝖡𝗎𝗒 𝖺𝗇𝗒 𝗂𝗍𝖾𝗆 𝗇𝗈𝗐...")
+    gg.sleep(3000)
+    gg.toast("🔍 𝖲𝖳𝖤𝖯 𝟤: 𝖱𝖾𝖿𝗂𝗇𝗂𝗇𝗀 𝖣𝖾𝗅𝗍𝖺...")
+    gg.searchNumber("50", gg.TYPE_DWORD)
+    local count = gg.getResultCount()
+    if count > 0 then
+        gg.getResults(100)
+        gg.editAll("999999999", gg.TYPE_DWORD)
+        gg.toast("✅ 𝖲𝖴𝖢𝖢𝖤𝖲𝖲: 𝖦𝗈𝗅𝖽 𝖬𝖺𝗍𝗋𝗂𝗏 𝖯𝖺𝗍𝖼𝗁𝖾𝖽!")
+    else
+        gg.toast("❌ 𝖥𝖠𝖨𝖫𝖤𝖣: 𝖭𝗈 𝖺𝖽𝖽𝗋𝖾𝗌𝗌 𝗌𝖾𝖼𝗍𝗈𝗋𝗌 𝖿𝗈𝗎𝗇𝖽.")
+    end
+    gg.clearResults()
+end
+
+-- ================= SKIP TIME LOGIC =================
+function skipperClassic()
+    StartupLoading()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    local waktuList = {"⏱️ 𝟢𝟦:𝟢𝟢", "⏱️ 𝟢𝟪:𝟢𝟢", "⏱️ 𝟣𝟢:𝟢𝟢", "⏱️ 𝟣𝟪:𝟢𝟢"}
+    local waktuMap = {["⏱️ 𝟢𝟦:𝟢𝟢"] = 240000, ["⏱️ 𝟢𝟪:𝟢𝟢"] = 480000, ["⏱️ 𝟣𝟢:𝟢𝟢"] = 600000, ["⏱️ 𝟣𝟪:𝟢𝟢"] = 720000}
+    local pilihan = gg.choice(waktuList, nil, "⏱️ 𝖢𝖧𝖱𝖮𝖭𝖮 𝖲𝖪𝖨𝖯𝖯𝖤𝖱: 𝖲𝖤𝖫𝖤𝖢𝖳 𝖳𝖠𝖱𝖦𝖤𝖳")
+    if pilihan == nil then return end
+    gg.searchNumber("30000;45000;1", gg.TYPE_DWORD)
+    gg.refineNumber("30000", gg.TYPE_DWORD)
+    local hasil = gg.getResults(10)
+    if #hasil == 0 then gg.toast("❌ 𝖭𝗈 𝖼𝗁𝗋𝗈𝗇𝗈 𝗆𝖺𝗋𝗄𝖾𝗋𝗌 𝗋𝖾𝗌𝗈𝗅𝗏𝖾𝖽.") return end
+    local save = {}
+    for i, v in ipairs(hasil) do table.insert(save, {address = v.address - 0x8, flags = gg.TYPE_DWORD}) end
+    local sebelum = gg.getValues(save)
+    gg.sleep(500)
+    local sesudah = gg.getValues(save)
+    local target = nil
+    for i = 1, #sebelum do
+        if sebelum[i].value ~= sesudah[i].value then target = save[i] break end
+    end
+    if target == nil then gg.toast("❌ 𝖳𝗂𝗆𝖾 𝗅𝗂𝗇𝖾 𝗁𝗈𝗈𝗄 𝖿𝖺𝗂𝗅𝗎𝗋𝖾.") return end
+    target.value = waktuMap[waktuList[pilihan]]
+    gg.setValues({target})
+    gg.toast("✅ 𝖳𝗂𝗆𝖾𝗅𝗂𝗇𝖾 adjusted 𝗍𝗈 " .. waktuList[pilihan])
+    gg.clearResults()
+end
+
+-- ================= MAPHACK FUNCTION =================
+function map()
+    StartupLoading()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.clearResults()
+    gg.searchNumber("98,784,247,822;47,244,640,279;4,510,805,388,492,275,723;:9", gg.TYPE_QWORD)
+    gg.refineNumber("98,784,247,822", gg.TYPE_QWORD)
+    local results = gg.getResults(9999)
+    if #results > 0 then
+        gg.editAll("98,784,247,823", gg.TYPE_QWORD)
+    end
+    gg.clearResults()
+    gg.toast("🗺️ 𝖬𝖺𝗉 𝖧𝖺𝖼𝗄 (𝖭𝗈 𝖨𝖼𝗈𝗇): 𝖮𝖭")
+end
+
+-- ================= MAIN LOOP =================
+gg.alert("🌀 𝙆𝘼process 𝙑𝙄𝙋 𝙀𝙉𝙂𝙄𝙉𝙀 🌀\n📊 𝖲𝖳𝖠𝖳𝖴𝖲: 𝖲𝖳𝖠𝖡𝖫𝖤 // 𝖵𝖤𝖱𝖲𝖨𝖮𝖭: 𝟣", "𝖤𝖷𝖤𝖢𝖴𝖳𝖤")
+while true do
+    if gg.isVisible(true) then
+        gg.setVisible(false)
+        MAIN()
+    end
+    gg.sleep(100)
+end
