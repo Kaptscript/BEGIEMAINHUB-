@@ -40,17 +40,11 @@ end
 
 verify()
 
-
-CHECK_LICENSE()
-
--- [ MEMORY PROTECTION BYPASS ] --
-function SECURITY_CHECK()
-    gg.setVisible(false)
-    gg.toast("🛡️ 𝖨𝗇𝗃𝖾𝖼𝗍𝗂𝗇𝗀-- [ SECURITY PROTOCOL ] --
+-- [ SECURITY PROTOCOL ] --
 local function CHECK_LICENSE()
     gg.toast("🌐 𝖥𝖾𝗍𝖼𝗁𝗂𝗇𝗀 𝖫𝗂𝖼𝖾𝗇𝗌𝖾 𝖣𝖺𝗍𝖺...")
 
-    local KEY_URL = "https://raw.githubusercontent.com/Kaptscript/BEGIEMAINHUB-/refs/heads/main/keys.txt"
+    local KEY_URL = "https://raw.githubusercontent.com/Kaptscript/BEGIEMAINHUB-/9f525dc6b1c372d84d1fb7a55c49e36a036680e4/keys.txt"
 
     local response = gg.makeRequest(KEY_URL)
 
@@ -114,7 +108,14 @@ local function CHECK_LICENSE()
         gg.alert("🚫 𝖨𝖭𝖵𝖫𝖨𝖣 𝖪𝖤𝖸! 𝖢𝖮𝖭𝖳𝖠𝖢𝖳 𝖸𝖮𝖴𝖱 𝖠𝖣𝖬𝖨𝖭")
         ExitScript()
     end
-end 𝖲𝖾𝖼𝗎𝗋𝖾 𝖡𝗒1𝖺𝗌𝗌...")
+end
+
+CHECK_LICENSE()
+
+-- [ MEMORY PROTECTION BYPASS ] --
+function SECURITY_CHECK()
+    gg.setVisible(false)
+    gg.toast("🛡️ 𝖨𝗇𝗃𝖾𝖼𝗍𝗂𝗇𝗀 𝖲𝖾𝖼𝗎𝗋𝖾 𝖡𝗒1𝖺𝗌𝗌...")
     gg.sleep(800)
     gg.clearResults()
     gg.clearList()
@@ -411,22 +412,22 @@ function GOLD()
     StartupLoading()
     gg.clearResults()
     gg.setVisible(false)
-    gg.toast("🚀 𝚄𝚗𝚕𝚒𝚖𝚒𝚝𝚎𝚍 𝙶𝚘𝚕𝚍 𝚂𝚌𝚛𝚒𝚙𝚝 𝚂𝚝𝚊𝚛𝚝𝚎𝚍")
+    gg.toast("💸 𝖨𝗇𝗂𝗍𝗂𝖺𝗍𝗂𝗇𝗅 𝖦𝗈𝗅𝖽 𝖬𝖾𝗆𝗈𝗋𝗒 𝖧𝗈𝗈𝗄...")
     gg.sleep(1000)
-    gg.toast("🔍 𝚂𝚝𝚎𝚙 1: 𝚂𝚎𝚊𝚛𝚌𝚑𝚒𝚗𝚐 𝚏𝚘𝚛 𝚌𝚞𝚛𝚛𝚎𝚗𝚝 𝙶𝚘𝚕𝚍...")
+    gg.toast("🔍 𝖲𝖳𝖤𝖯 𝟣: 𝖲𝖼𝖺𝗇𝗇𝗂𝗇𝗀 𝖡𝖺𝗌𝖾 𝖵𝖺𝗅𝗎𝖾𝗌...")
     gg.searchNumber("300", gg.TYPE_DWORD)
     gg.sleep(2000)
-    gg.toast("💰 𝙽𝚘𝚠 𝚋𝚞𝚢 𝚊𝚗𝚢 𝚒𝚝𝚎𝚖 𝚝𝚘 𝚛𝚎𝚍𝚞𝚌𝚎 𝚐𝚘𝚕𝚍...")
+    gg.toast("🛒 𝖬𝖮𝖣𝖤𝖱𝖠𝖳𝖤: 𝖡𝗎𝗒 𝖺𝗇𝗒 𝗂𝗍𝖾𝗆 𝗇𝗈𝗐...")
     gg.sleep(3000)
-    gg.toast("🔍 𝚂𝚝𝚎𝚙 2: 𝚁𝚎𝚏𝚒𝚗𝚒𝚗𝚐...")
+    gg.toast("🔍 𝖲𝖳𝖤𝖯 𝟤: 𝖱𝖾𝖿𝗂𝗇𝗂𝗇𝗀 𝖣𝖾𝗅𝗍𝖺...")
     gg.searchNumber("50", gg.TYPE_DWORD)
     local count = gg.getResultCount()
     if count > 0 then
         gg.getResults(100)
         gg.editAll("999999999", gg.TYPE_DWORD)
-        gg.toast("✅ 𝚂𝚄𝙲𝙲𝙴𝚂𝚂!")
+        gg.toast("✅ 𝖲𝖴𝖢𝖢𝖤𝖲𝖲: 𝖦𝗈𝗅𝖽 𝖬𝖺𝗍𝗋𝗂𝗏 𝖯𝖺𝗍𝖼𝗁𝖾𝖽!")
     else
-        gg.toast("❌ 𝙵𝚊𝚒𝚕𝚎𝚍. 𝙽𝚘 𝚟𝚊𝚕𝚞𝚎𝚜 𝚏𝚘𝚞𝚗𝚍.")
+        gg.toast("❌ 𝖥𝖠𝖨𝖫𝖤𝖣: 𝖭𝗈 𝖺𝖽𝖽𝗋𝖾𝗌𝗌 𝗌𝖾𝖼𝗍𝗈𝗋𝗌 𝖿𝗈𝗎𝗇𝖽.")
     end
     gg.clearResults()
 end
@@ -436,14 +437,14 @@ function skipperClassic()
     StartupLoading()
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
-    local waktuList = {"⏳ 04:00", "⏳ 08:00", "⏳ 10:00", "⏳ 12:00"}
-    local waktuMap = {["⏳ 04:00"] = 240000, ["⏳ 08:00"] = 480000, ["⏳ 10:00"] = 600000, ["⏳ 12:00"] = 720000}
-    local pilihan = gg.choice(waktuList, nil, "🎮 𝚂𝚎𝚕𝚎𝚌𝚝 𝚝𝚊𝚛𝚐𝚎𝚝 𝚝𝚒𝚖𝚎 𝚝𝚘 𝚂𝚔𝚒𝚙/𝚁𝚎𝚜𝚎𝚝:")
+    local waktuList = {"⏱️ 𝟢𝟦:𝟢𝟢", "⏱️ 𝟢𝟪:𝟢𝟢", "⏱️ 𝟣𝟢:𝟢𝟢", "⏱️ 𝟣𝟪:𝟢𝟢"}
+    local waktuMap = {["⏱️ 𝟢𝟦:𝟢𝟢"] = 240000, ["⏱️ 𝟢𝟪:𝟢𝟢"] = 480000, ["⏱️ 𝟣𝟢:𝟢𝟢"] = 600000, ["⏱️ 𝟣𝟪:𝟢𝟢"] = 720000}
+    local pilihan = gg.choice(waktuList, nil, "⏱️ 𝖢𝖧𝖱𝖮𝖭𝖮 𝖲𝖪𝖨𝖯𝖯𝖤𝖱: 𝖲𝖤𝖫𝖤𝖢𝖳 𝖳𝖠𝖱𝖦𝖤𝖳")
     if pilihan == nil then return end
     gg.searchNumber("30000;45000;1", gg.TYPE_DWORD)
     gg.refineNumber("30000", gg.TYPE_DWORD)
     local hasil = gg.getResults(10)
-    if #hasil == 0 then gg.toast("𝙽𝚘 𝚛𝚎𝚜𝚞𝚕𝚝𝚜 𝚏𝚘𝚞𝚗𝚍.") return end
+    if #hasil == 0 then gg.toast("❌ 𝖭𝗈 𝖼𝗁𝗋𝗈𝗇𝗈 𝗆𝖺𝗋𝗄𝖾𝗋𝗌 𝗋𝖾𝗌𝗈𝗅𝗏𝖾𝖽.") return end
     local save = {}
     for i, v in ipairs(hasil) do table.insert(save, {address = v.address - 0x8, flags = gg.TYPE_DWORD}) end
     local sebelum = gg.getValues(save)
@@ -453,10 +454,10 @@ function skipperClassic()
     for i = 1, #sebelum do
         if sebelum[i].value ~= sesudah[i].value then target = save[i] break end
     end
-    if target == nil then gg.toast("𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚎𝚝𝚎𝚌𝚝 𝚊𝚍𝚍𝚛𝚎𝚜𝚜.") return end
+    if target == nil then gg.toast("❌ 𝖳𝗂𝗆𝖾 𝗅𝗂𝗇𝖾 𝗁𝗈𝗈𝗄 𝖿𝖺𝗂𝗅𝗎𝗋𝖾.") return end
     target.value = waktuMap[waktuList[pilihan]]
     gg.setValues({target})
-    gg.toast("✅ 𝙼𝚊𝚝𝚌𝚑 𝚝𝚒𝚖𝚎 𝚜𝚎𝚝 𝚝𝚘 " .. waktuList[pilihan])
+    gg.toast("✅ 𝖳𝗂𝗆𝖾𝗅𝗂𝗇𝖾 adjusted 𝗍𝗈 " .. waktuList[pilihan])
     gg.clearResults()
 end
 
