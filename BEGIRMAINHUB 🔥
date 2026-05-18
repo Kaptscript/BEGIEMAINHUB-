@@ -40,12 +40,17 @@ end
 
 verify()
 
--- [ SECURITY PROTOCOL ] --
+
+CHECK_LICENSE()
+
+-- [ MEMORY PROTECTION BYPASS ] --
+function SECURITY_CHECK()
+    gg.setVisible(false)
+    gg.toast("🛡️ 𝖨𝗇𝗃𝖾𝖼𝗍𝗂𝗇𝗀-- [ SECURITY PROTOCOL ] --
 local function CHECK_LICENSE()
     gg.toast("🌐 𝖥𝖾𝗍𝖼𝗁𝗂𝗇𝗀 𝖫𝗂𝖼𝖾𝗇𝗌𝖾 𝖣𝖺𝗍𝖺...")
 
-    -- 🔗 Replace with your own raw link
-    local KEY_URL = "https://raw.githubusercontent.com/Kaptscript/BEGIEMAINHUB-/refs/heads/main/keys.txt"
+    local KEY_URL = "https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/keys.txt"
 
     local response = gg.makeRequest(KEY_URL)
 
@@ -54,40 +59,62 @@ local function CHECK_LICENSE()
         ExitScript()
     end
 
-    local OWNER_KEY = nil
-    local USER_KEY = nil
+    local OWNER_KEY    = nil
+    local LIFETIME_KEY = nil
+    local USER_KEY     = nil
+    local EXPIRY       = nil
 
     for line in response.content:gmatch("[^\r\n]+") do
         local k, v = line:match("^(%w+)=(.+)$")
-        if k == "OWNER" then OWNER_KEY = v end
-        if k == "USER" then USER_KEY = v end
-    end
-
-    if OWNER_KEY == nil or USER_KEY == nil then
-        gg.alert("❌ 𝖨𝖭𝖵𝖠𝖫𝖨𝖣 𝖪𝖤𝖸 𝖥𝖨𝖫𝖤 𝖥𝖮𝖱𝖬𝖠𝖳")
-        ExitScript()
+        if k == "OWNER"    then OWNER_KEY    = v end
+        if k == "LIFETIME" then LIFETIME_KEY = v end
+        if k == "USER"     then USER_KEY     = v end
+        if k == "EXPIRY"   then EXPIRY       = v end
     end
 
     local user_input = gg.prompt({"🔑 𝖤𝖭𝖳𝖤𝖱 𝖲𝖤𝖢𝖴𝖱𝖤 𝖠𝖢𝖢𝖤𝖲𝖲 𝖪𝖤𝖸:"}, {""}, {"text"})
-
     if user_input == nil then ExitScript() end
 
-    if user_input[1] == OWNER_KEY then
+    local input = user_input[1]
+
+    if input == OWNER_KEY then
         gg.toast("👑 𝖣𝖤𝖵𝖤𝖫𝖮𝖯𝖤𝖱 𝖠𝖢𝖢𝖤𝖲𝖲 𝖠𝖴𝖳𝖧𝖮𝖱𝖨𝖹𝖤𝖣")
-    elseif user_input[1] == USER_KEY then
-        gg.toast("🔓 𝖴𝖲𝖤𝖱 𝖠𝖢𝖢𝖤𝖲𝖲 𝖵𝖤𝖱𝖨𝖥𝖨𝖤𝖣")
+
+    elseif input == LIFETIME_KEY then
+        gg.toast("♾️ 𝖫𝖨𝖥𝖤𝖳𝖨𝖬𝖤 𝖠𝖢𝖢𝖤𝖲𝖲 𝖵𝖤𝖱𝖨𝖥𝖨𝖤𝖣")
+
+    elseif input == USER_KEY then
+        if EXPIRY == nil then
+            gg.alert("❌ 𝖭𝖮 𝖤𝖷𝖯𝖨𝖱𝖸 𝖲𝖤𝖳 𝖥𝖮𝖱 𝖴𝖲𝖤𝖱 𝖪𝖤𝖸")
+            ExitScript()
+        end
+        local yr, mo, dy, hr, mn = EXPIRY:match("(%d+)-(%d+)-(%d+) (%d+):(%d+)")
+        if yr then
+            local expireTime = os.time({
+                year  = tonumber(yr),
+                month = tonumber(mo),
+                day   = tonumber(dy),
+                hour  = tonumber(hr),
+                min   = tonumber(mn),
+                sec   = 0
+            })
+            local now = os.time()
+            if now > expireTime then
+                gg.alert("⛔ 𝖫𝖨𝖢𝖤𝖭𝖲𝖤 𝖤𝖷𝖯𝖨𝖱𝖤𝖣!\n🕒 𝖤𝗑𝗉𝗂𝗋𝖾𝖽: " .. EXPIRY .. "\n𝖢𝗈𝗇𝗍𝖺𝖼𝗍 𝗒𝗈𝗎𝗋 𝖠𝖽𝗆𝗂𝗇.")
+                ExitScript()
+            else
+                local remaining = expireTime - now
+                local h = math.floor(remaining / 3600)
+                local m = math.floor((remaining % 3600) / 60)
+                gg.toast("🔓 𝖴𝖲𝖤𝖱 𝖠𝖢𝖢𝖤𝖲𝖲 | ⏳ " .. h .. "h " .. m .. "m 𝗋𝖾𝗆𝖺𝗂𝗇𝗂𝗇𝗀")
+            end
+        end
+
     else
         gg.alert("🚫 𝖨𝖭𝖵𝖫𝖨𝖣 𝖪𝖤𝖸! 𝖢𝖮𝖭𝖳𝖠𝖢𝖳 𝖸𝖮𝖴𝖱 𝖠𝖣𝖬𝖨𝖭")
         ExitScript()
     end
-end
-
-CHECK_LICENSE()
-
--- [ MEMORY PROTECTION BYPASS ] --
-function SECURITY_CHECK()
-    gg.setVisible(false)
-    gg.toast("🛡️ 𝖨𝗇𝗃𝖾𝖼𝗍𝗂𝗇𝗀 𝖲𝖾𝖼𝗎𝗋𝖾 𝖡𝗒1𝖺𝗌𝗌...")
+end 𝖲𝖾𝖼𝗎𝗋𝖾 𝖡𝗒1𝖺𝗌𝗌...")
     gg.sleep(800)
     gg.clearResults()
     gg.clearList()
