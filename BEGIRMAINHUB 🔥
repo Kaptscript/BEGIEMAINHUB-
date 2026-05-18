@@ -50,7 +50,7 @@ function SECURITY_CHECK()
 local function CHECK_LICENSE()
     gg.toast("🌐 𝖥𝖾𝗍𝖼𝗁𝗂𝗇𝗀 𝖫𝗂𝖼𝖾𝗇𝗌𝖾 𝖣𝖺𝗍𝖺...")
 
-    local KEY_URL = "https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/keys.txt"
+    local KEY_URL = "https://raw.githubusercontent.com/Kaptscript/BEGIEMAINHUB-/refs/heads/main/keys.txt"
 
     local response = gg.makeRequest(KEY_URL)
 
